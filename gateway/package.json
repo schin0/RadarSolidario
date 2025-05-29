@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "@wppconnect-team/wppconnect": "^1.37.2"
+    "@wppconnect-team/wppconnect": "^1.37.2",
+    "axios": "^1.9.0",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0"
   }
 }
