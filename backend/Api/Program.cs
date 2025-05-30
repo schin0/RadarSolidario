@@ -1,4 +1,5 @@
 using Api.Services;
+using Core.UseCase;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient<WhatsappService>();
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<ProcessWhatsappMessage>());
 
 var app = builder.Build();
 
