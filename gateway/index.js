@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 let wppClientInstance;
 
-const API_INCOMING_MESSAGE_WEBHOOK_URL = 'http://localhost:5000/api/whatsapp/webhook/message-received';
+const API_INCOMING_MESSAGE_WEBHOOK_URL = 'http://localhost:5256/api/whatsapp/webhook/message-received';
 
 async function sendToApi(webhookType, data) {
   try {
