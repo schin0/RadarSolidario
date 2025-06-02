@@ -1,10 +1,12 @@
 ﻿using Core.Request;
+using Infra.Interfaces;
+using Infra.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace Core.UseCase;
 
-public class ProcessWhatsappMessage(ILogger<ProcessWhatsappMessage> logger) : IRequestHandler<ProcessWhatsappMessageRequest, string>
+public class ProcessWhatsappMessage(ILogger<ProcessWhatsappMessage> logger, IInfoRepository infoRepository) : IRequestHandler<ProcessWhatsappMessageRequest, string>
 {
     private const string WelcomeOptionsMenu =
         "Olá! 👋 Bem-vindo(a) ao Radar Solidário!\n\n" +
@@ -17,7 +19,7 @@ public class ProcessWhatsappMessage(ILogger<ProcessWhatsappMessage> logger) : IR
         "3️⃣ *ESTOU SEGURO(A) / OUTRAS INFORMAÇÕES* ✅\n" +
         "   _(Se você está seguro(a), mas gostaria de informações gerais ou reportar algo não urgente.)_";
 
-    public Task<string> Handle(ProcessWhatsappMessageRequest request, CancellationToken cancellationToken)
+    public async Task<string> Handle(ProcessWhatsappMessageRequest request, CancellationToken cancellationToken)
     {
         string userMessageLower = request.MessageBody?.Trim().ToLower() ?? "";
         string userResponseMessage;
@@ -29,6 +31,7 @@ public class ProcessWhatsappMessage(ILogger<ProcessWhatsappMessage> logger) : IR
             case "preciso":
             case "🆘":
                 userResponseMessage = "Seu pedido de ajuda foi registrado em nosso sistema. Entraremos em contato em breve com mais informações ou para coletar detalhes. Se a situação for de risco extremo e imediato, ligue para os serviços de emergência (190 para Polícia, 193 para Bombeiros, 199 para Defesa Civil).";
+                await infoRepository.IncrementQuantityHelpAsync();
                 logger.LogInformation("User {Sender} selected: PRECISO DE AJUDA.", request.Sender);
                 break;
 
@@ -40,6 +43,7 @@ public class ProcessWhatsappMessage(ILogger<ProcessWhatsappMessage> logger) : IR
             case "voluntária":
             case "�":
                 userResponseMessage = "Que ótimo! Sua disposição em ajudar é muito valiosa. Para prosseguir com seu cadastro como voluntário(a), por favor, nos informe seu *nome completo*.";
+                await infoRepository.IncrementQuantityVolunteersAsync();
                 logger.LogInformation("User {Sender} selected: POSSO AJUDAR.", request.Sender);
                 break;
 
@@ -60,6 +64,6 @@ public class ProcessWhatsappMessage(ILogger<ProcessWhatsappMessage> logger) : IR
                 break;
         }
 
-        return Task.FromResult(userResponseMessage);
+        return userResponseMessage;
     }
 }
