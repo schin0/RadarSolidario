@@ -33,23 +33,37 @@ stepItems.forEach(item => {
   });
 });
 
-const sectionsToReveal = document.querySelectorAll('.section-reveal');
-const revealObserverOptions = { threshold: 0.1 };
-const revealObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      if (entry.target.id === 'nosso-impacto') {
-        animateCounters();
-      }
-      observer.unobserve(entry.target);
-    }
-  });
-}, revealObserverOptions);
+const impactSection = document.getElementById('nosso-impacto');
+const loadingStatsElement = document.getElementById('loading-stats');
+let statsFetched = false;
 
-sectionsToReveal.forEach(section => {
-  revealObserver.observe(section);
-});
+async function fetchImpactNumbers() {
+  if (statsFetched)
+    return;
+
+  statsFetched = true;
+
+  const apiUrl = 'http://localhost:5256/api/Info';
+
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
+    }
+    const data = await response.json();
+
+    document.getElementById('impactPessoasAjudadas')?.setAttribute('data-count', data.quantityHelp || 0);
+    document.getElementById('impactVoluntarios')?.setAttribute('data-count', data.quantityVolunteers || 0);
+    document.getElementById('impactConexoes')?.setAttribute('data-count', data.connections || 0);
+    document.getElementById('impactComunidades')?.setAttribute('data-count', data.communitiesServed || 0);
+
+    if (loadingStatsElement) loadingStatsElement.style.display = 'none';
+
+    animateCounters();
+  } catch (error) {
+    if (loadingStatsElement) loadingStatsElement.textContent = 'Não foi possível carregar as estatísticas.';
+  }
+}
 
 function animateCounters() {
   const counters = document.querySelectorAll('.impact-number');
@@ -58,6 +72,7 @@ function animateCounters() {
   counters.forEach(counter => {
     if (counter.classList.contains('animated')) return;
     counter.classList.add('animated');
+    counter.innerText = '0';
 
     const updateCount = () => {
       const target = +counter.getAttribute('data-count');
@@ -69,15 +84,30 @@ function animateCounters() {
         setTimeout(updateCount, 15);
       } else {
         let finalTargetText = target.toLocaleString('pt-BR');
-        if (target === 1200 || target === 350 || target === 950) {
-          finalTargetText += '+';
-        }
         counter.innerText = finalTargetText;
       }
     };
     updateCount();
   });
 }
+
+const sectionsToReveal = document.querySelectorAll('.section-reveal');
+const revealObserverOptions = { threshold: 0.1 };
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      if (entry.target.id === 'nosso-impacto' && !statsFetched) {
+        fetchImpactNumbers();
+      }
+      observer.unobserve(entry.target);
+    }
+  });
+}, revealObserverOptions);
+
+sectionsToReveal.forEach(section => {
+  revealObserver.observe(section);
+});
 
 const eventosCtx = document.getElementById('eventosClimaticosChart');
 if (eventosCtx) {
