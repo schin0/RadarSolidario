@@ -1,12 +1,4 @@
-﻿using System.Net.Http;
-using System.Net.Http.Json; 
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-
-namespace Api.Services;
+﻿namespace Api.Services;
 
 public class WhatsappService(HttpClient httpClient, IConfiguration configuration, ILogger<WhatsappService> logger)
 {

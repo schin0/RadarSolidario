@@ -63,4 +63,3 @@ public class ProcessWhatsappMessage(ILogger<ProcessWhatsappMessage> logger) : IR
         return Task.FromResult(userResponseMessage);
     }
 }
-
