@@ -39,7 +39,7 @@ body {
 }
 
 .step-active .step-details {
-  max-height: 500px;
+  max-height: 600px;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -103,4 +103,35 @@ body {
   border-left-color: #16a34a;
   border-right: 0;
   border-bottom: 0;
+}
+
+.impact-number {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  max-height: 350px;
+}
+
+.donut-chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  max-height: 300px;
+}
+
+@media (min-width: 768px) {
+  .chart-container {
+    height: 350px;
+  }
 }

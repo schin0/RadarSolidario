@@ -6,16 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Radar Solidário - Conectando Ajuda em Tempos de Crise</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script src="main.js"></script>
 </head>
 
 <body class="bg-slate-50 text-slate-700 overflow-x-hidden">
+
   <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
     <div class="container mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
@@ -80,15 +81,23 @@
 
   <section id="problema" class="py-16 md:py-24 bg-slate-50 section-reveal">
     <div class="container mx-auto px-6">
-      <div class="text-center max-w-3xl mx-auto">
-        <span class="text-sky-600 text-5xl mb-6 block">⚠️</span>
-        <h2 class="text-4xl md:text-5xl font-lexend font-bold text-slate-800 mb-6">O Desafio Imediato das Crises
-          Climáticas</h2>
-        <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
-          Eventos climáticos extremos estão se tornando mais frequentes e intensos. Quando o inesperado acontece, a
-          falta de apoio rápido e coordenado pode agravar o sofrimento de comunidades vulneráveis, deixando pessoas
-          isoladas e sem acesso a recursos essenciais no momento em que mais precisam.
-        </p>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="text-left">
+          <span class="text-sky-600 text-5xl mb-6 block">⚠️</span>
+          <h2 class="text-4xl md:text-5xl font-lexend font-bold text-slate-800 mb-6">O Desafio Imediato das Crises
+            Climáticas</h2>
+          <p class="text-lg md:text-xl text-slate-600 leading-relaxed mb-6">
+            Eventos climáticos extremos estão se tornando mais frequentes e intensos. Quando o inesperado acontece, a
+            falta de apoio rápido e coordenado pode agravar o sofrimento de comunidades vulneráveis.
+          </p>
+          <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
+            Isso deixa pessoas isoladas e sem acesso a recursos essenciais no momento em que mais precisam, evidenciando
+            a necessidade de soluções ágeis e comunitárias.
+          </p>
+        </div>
+        <div class="chart-container bg-white p-5 rounded-lg shadow-xl">
+          <canvas id="eventosClimaticosChart"></canvas>
+        </div>
       </div>
     </div>
   </section>
@@ -214,6 +223,34 @@
     </div>
   </section>
 
+  <section id="nosso-impacto" class="py-16 md:py-24 bg-white section-reveal">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-lexend font-bold text-slate-800 mb-4">Radar Solidário em Números</h2>
+        <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">Nosso compromisso é com resultados tangíveis e o
+          fortalecimento comunitário. (Dados ilustrativos)</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div class="p-8 bg-slate-50 rounded-xl shadow-lg">
+          <div class="text-emerald-500 font-lexend font-extrabold impact-number mb-2" data-count="1200">0</div>
+          <h3 class="text-xl font-semibold text-slate-700">Pessoas Ajudadas</h3>
+        </div>
+        <div class="p-8 bg-slate-50 rounded-xl shadow-lg">
+          <div class="text-sky-500 font-lexend font-extrabold impact-number mb-2" data-count="350">0</div>
+          <h3 class="text-xl font-semibold text-slate-700">Voluntários na Rede</h3>
+        </div>
+        <div class="p-8 bg-slate-50 rounded-xl shadow-lg">
+          <div class="text-amber-500 font-lexend font-extrabold impact-number mb-2" data-count="950">0</div>
+          <h3 class="text-xl font-semibold text-slate-700">Conexões Solidárias</h3>
+        </div>
+        <div class="p-8 bg-slate-50 rounded-xl shadow-lg">
+          <div class="text-indigo-500 font-lexend font-extrabold impact-number mb-2" data-count="25">0</div>
+          <h3 class="text-xl font-semibold text-slate-700">Comunidades Atendidas</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="proposta-valor" class="py-16 md:py-24 bg-white section-reveal">
     <div class="container mx-auto px-6">
       <div class="text-center mb-16">
@@ -315,9 +352,7 @@
     </div>
   </footer>
 
-  <script>
-
-  </script>
+  <script src="main.js"></script>
 </body>
 
 </html>
