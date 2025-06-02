@@ -1,264 +1,323 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radar Solidário</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Radar Solidário - Conectando Ajuda em Tempos de Crise</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <script src="main.js"></script>
 </head>
 
-<body class="bg-stone-100 text-slate-700">
-
-  <header class="bg-white shadow-md sticky top-0 z-50">
-    <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold text-sky-600">Radar Solidário</a>
-      <div class="space-x-4">
-        <a href="#oque-e" class="nav-link text-slate-700">O Que É?</a>
-        <a href="#como-funciona" class="nav-link text-slate-700">Como Funciona?</a>
-        <a href="#ecossistema" class="nav-link text-slate-700">Ecossistema</a>
-        <a href="#impacto" class="nav-link text-slate-700">Impacto</a>
-        <a href="#admin-simulado" class="nav-link text-slate-700">Admin (Simulado)</a>
+<body class="bg-slate-50 text-slate-700 overflow-x-hidden">
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex justify-between items-center">
+        <a href="#" class="text-3xl font-lexend font-bold text-white">Radar Solidário</a>
+        <nav class="hidden md:flex space-x-8">
+          <a href="#problema" class="text-white hover:text-sky-200 transition-colors">O Desafio</a>
+          <a href="#solucao" class="text-white hover:text-sky-200 transition-colors">Nossa Solução</a>
+          <a href="#como-funciona" class="text-white hover:text-sky-200 transition-colors">Como Funciona</a>
+          <a href="#junte-se" class="text-white hover:text-sky-200 transition-colors">Participe</a>
+        </nav>
+        <a href="https://wa.me/5511912232956?text=RADAR" target="_blank"
+          class="hidden md:inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-6 rounded-lg cta-button">
+          Acessar via WhatsApp
+        </a>
+        <button id="mobile-menu-button" class="md:hidden text-white text-3xl">
+          ☰
+        </button>
       </div>
-    </nav>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-sky-700/90 backdrop-blur-sm">
+      <nav class="flex flex-col items-center space-y-4 py-4">
+        <a href="#problema" class="text-white hover:text-sky-200 transition-colors py-2">O Desafio</a>
+        <a href="#solucao" class="text-white hover:text-sky-200 transition-colors py-2">Nossa Solução</a>
+        <a href="#como-funciona" class="text-white hover:text-sky-200 transition-colors py-2">Como Funciona</a>
+        <a href="#junte-se" class="text-white hover:text-sky-200 transition-colors py-2">Participe</a>
+        <a href="https://wa.me/5511912232956?text=RADAR" target="_blank"
+          class="mt-4 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-6 rounded-lg cta-button">
+          Acessar via WhatsApp
+        </a>
+      </nav>
+    </div>
   </header>
 
-  <section id="oque-e" class="py-16 bg-white">
-    <div class="container mx-auto px-6 text-center">
-      <h1 class="text-5xl font-bold text-sky-700 mb-6">Radar Solidário</h1>
-      <p class="text-xl text-slate-600 mb-4 max-w-3xl mx-auto">Conectando ajuda em tempos de crise climática.</p>
-      <p class="text-lg text-slate-500 mb-8 max-w-2xl mx-auto">
-        O Radar Solidário é uma plataforma que visa conectar pessoas que precisam de ajuda durante eventos climáticos
-        extremos com aquelas que podem oferecer apoio nas proximidades. Nossa proposta de valor é uma rede solidária
-        ativada por informações de clima e localização, facilitando a ajuda mútua de forma rápida e eficiente.
+  <section
+    class="hero-bg min-h-screen flex items-center justify-center pt-20 pb-10 md:pt-24 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <h1 class="text-5xl md:text-7xl font-lexend font-extrabold mb-6 leading-tight animate-fade-in-down">
+        Conectando Ajuda, <span class="text-sky-300">Fortalecendo Comunidades</span> em Tempos de Crise.
+      </h1>
+      <p class="text-xl md:text-2xl text-sky-100 mb-10 max-w-3xl mx-auto animate-fade-in-up"
+        style="animation-delay: 0.3s;">
+        O Radar Solidário é a sua rede de apoio mútuo ativada por alertas climáticos e geolocalização, facilitando a
+        conexão rápida entre quem precisa de ajuda e quem pode oferecer.
       </p>
-      <div class="bg-amber-100 border-l-4 border-amber-500 text-amber-700 p-4 rounded-md max-w-xl mx-auto">
-        <h3 class="font-bold">Problema Abordado:</h3>
-        <p>A falta de apoio rápido e coordenado para pessoas afetadas por eventos climáticos, especialmente em
-          comunidades vulneráveis.</p>
+      <div class="space-y-4 md:space-y-0 md:space-x-6 animate-fade-in-up" style="animation-delay: 0.6s;">
+        <a href="https://wa.me/5511912232956?text=1" target="_blank"
+          class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-lg py-4 px-10 rounded-lg cta-button shadow-xl">
+          Preciso de Ajuda Urgente
+        </a>
+        <a href="https://wa.me/5511912232956?text=2" target="_blank"
+          class="inline-block bg-sky-400 hover:bg-sky-500 text-white font-bold text-lg py-4 px-10 rounded-lg cta-button shadow-xl">
+          Quero Ser Voluntário(a)
+        </a>
       </div>
+      <p class="mt-8 text-sm text-sky-200 animate-fade-in-up" style="animation-delay: 0.9s;">Interaja diretamente pelo
+        WhatsApp. Simples, rápido e acessível.</p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent">
     </div>
   </section>
 
-  <section id="como-funciona" class="py-16">
+  <section id="problema" class="py-16 md:py-24 bg-slate-50 section-reveal">
     <div class="container mx-auto px-6">
-      <h2 class="section-title text-center text-slate-800">Como Funciona o Fluxo de Ajuda?</h2>
-      <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-        Entenda o passo a passo de como o Radar Solidário opera para conectar quem precisa de ajuda com voluntários
-        próximos durante um evento climático. Clique em cada etapa para ver mais detalhes e interagir com as
-        funcionalidades de IA.
-      </p>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="step-card bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-          onclick="toggleDetails('step1-details')">
-          <div class="flex items-center mb-3">
-            <span class="text-3xl text-sky-600 mr-4">🌍</span>
-            <h3 class="text-xl font-semibold text-slate-800">1. Detecção do Evento</h3>
-          </div>
-          <p class="text-slate-600">APIs de clima detectam riscos (ex: enchente em 2h). Regiões afetadas são
-            identificadas por coordenadas.</p>
-          <div id="step1-details" class="flow-step-details mt-3 pt-3 border-t border-slate-200">
-            <p class="text-sm text-slate-500">Utilizamos integrações com serviços meteorológicos como o INMET para
-              monitorar continuamente as condições climáticas e identificar potenciais ameaças com antecedência.</p>
-          </div>
-        </div>
-        <div class="step-card bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-          onclick="toggleDetails('step2-details')">
-          <div class="flex items-center mb-3">
-            <span class="text-3xl text-sky-600 mr-4">📱</span>
-            <h3 class="text-xl font-semibold text-slate-800">2. Envio de Alerta</h3>
-          </div>
-          <p class="text-slate-600">Mensagem (SMS/WhatsApp) enviada para usuários cadastrados na proximidade do risco
-            identificado.</p>
-          <div id="step2-details" class="flow-step-details mt-3 pt-3 border-t border-slate-200">
-            <p class="text-sm text-slate-500 mb-2">Exemplo de mensagem:</p>
-            <div class="sms-bubble self-start">
-              <strong>RADAR SOLIDÁRIO (11:30 AM)</strong><br>
-              Alerta de Chuva Forte previsto para o bairro Boa Esperança nas próximas 2 horas.<br><br>
-              Você precisa de ajuda ou pode ajudar?<br>
-              Responda:<br>
-              1 - PRECISO DE AJUDA<br>
-              2 - POSSO AJUDAR<br>
-              3 - ESTOU SEGURO(A)
-            </div>
-          </div>
-        </div>
-        <div class="step-card bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-          onclick="toggleDetails('step3-details')">
-          <div class="flex items-center mb-3">
-            <span class="text-3xl text-sky-600 mr-4">💬</span>
-            <h3 class="text-xl font-semibold text-slate-800">3. Usuário Responde</h3>
-          </div>
-          <p class="text-slate-600">Se "1", entra na fila de pedidos. Se "2", na lista de voluntários por proximidade.
-          </p>
-          <div id="step3-details" class="flow-step-details mt-3 pt-3 border-t border-slate-200">
-            <p class="text-sm text-slate-500">As respostas são processadas automaticamente para agilizar o atendimento.
-              A opção "Estou Seguro(a)" nos ajuda a focar os esforços em quem realmente precisa.</p>
-          </div>
-        </div>
-        <div class="step-card bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-          onclick="toggleDetails('step4-details')">
-          <div class="flex items-center mb-3">
-            <span class="text-3xl text-sky-600 mr-4">🤝</span>
-            <h3 class="text-xl font-semibold text-slate-800">4. Match Solidário</h3>
-          </div>
-          <p class="text-slate-600">Sistema localiza quem pode ajudar próximo de quem precisa. Envia mensagem ao
-            voluntário para confirmação.</p>
-          <div id="step4-details" class="flow-step-details mt-3 pt-3 border-t border-slate-200">
-            <p class="text-sm text-slate-500">O algoritmo prioriza a proximidade e o tipo de ajuda ofertada/necessária
-              para criar conexões eficazes.</p>
-          </div>
-        </div>
-        <div class="step-card bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-          onclick="toggleDetails('step5-details')">
-          <div class="flex items-center mb-3">
-            <span class="text-3xl text-sky-600 mr-4">📞</span>
-            <h3 class="text-xl font-semibold text-slate-800">5. Comunicação</h3>
-          </div>
-          <p class="text-slate-600">Se o voluntário aceitar, ambos recebem dados de contato seguros para coordenar a
-            ajuda (WhatsApp ou canal autorizado).</p>
-          <div id="step5-details" class="flow-step-details mt-3 pt-3 border-t border-slate-200">
-            <p class="text-sm text-slate-500">A comunicação é limitada e segura, compartilhando apenas dados mínimos
-              necessários. A privacidade e segurança dos usuários são prioridade.</p>
-          </div>
-        </div>
-        <div class="step-card bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-          onclick="toggleDetails('step6-details')">
-          <div class="flex items-center mb-3">
-            <span class="text-3xl text-sky-600 mr-4">📊</span>
-            <h3 class="text-xl font-semibold text-slate-800">6. Histórico e Controle</h3>
-          </div>
-          <p class="text-slate-600">Admin acompanha mapa de ocorrências, status das conexões e áreas críticas através de
-            um painel.</p>
-          <div id="step6-details" class="flow-step-details mt-3 pt-3 border-t border-slate-200">
-            <p class="text-sm text-slate-500">Essa visão geral permite uma gestão eficiente dos recursos e a
-              identificação de gargalos ou necessidades adicionais.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="ecossistema" class="py-16 bg-sky-50">
-    <div class="container mx-auto px-6">
-      <h2 class="section-title text-center text-slate-800">Nosso Ecossistema</h2>
-      <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-        O Radar Solidário se baseia em uma combinação de tecnologias chave e parcerias estratégicas para operar de forma
-        eficaz.
-      </p>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h3 class="text-xl font-semibold text-sky-700 mb-2">Atividades-Chave</h3>
-          <ul class="list-disc list-inside text-slate-600 space-y-1">
-            <li>Monitoramento climático contínuo</li>
-            <li>Geolocalização precisa de usuários e eventos</li>
-            <li>Envio automatizado de alertas</li>
-            <li>Matching inteligente entre necessitados e voluntários</li>
-          </ul>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h3 class="text-xl font-semibold text-sky-700 mb-2">Recursos Principais</h3>
-          <ul class="list-disc list-inside text-slate-600 space-y-1">
-            <li>APIs climáticas (ex: INMET, OpenWeather)</li>
-            <li>Banco de dados de usuários e geolocalização (Firebase)</li>
-            <li>Plataforma de mensageria (ex: Twilio para SMS, WhatsApp API)</li>
-            <li>Sistema de mapas interativos</li>
-          </ul>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h3 class="text-xl font-semibold text-sky-700 mb-2">Parcerias-Chave</h3>
-          <ul class="list-disc list-inside text-slate-600 space-y-1">
-            <li>Defesa Civil</li>
-            <li>INMET (Instituto Nacional de Meteorologia)</li>
-            <li>Google (Maps, Cloud)</li>
-            <li>Twilio (Comunicação)</li>
-            <li>ONGs locais e líderes comunitários</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="impacto" class="py-16 bg-white">
-    <div class="container mx-auto px-6">
-      <h2 class="section-title text-center text-slate-800">Impacto e Público-Alvo</h2>
-      <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">
-        Nosso foco é atender comunidades vulneráveis em áreas urbanas e rurais, fornecendo uma ferramenta ágil para
-        mitigar os impactos de eventos climáticos.
-      </p>
-      <div class="grid md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h3 class="text-2xl font-semibold text-sky-700 mb-3">A quem se destina?</h3>
-          <p class="text-slate-600 mb-4">O Radar Solidário é projetado para indivíduos e famílias em áreas de risco, bem
-            como para voluntários dispostos a ajudar em suas comunidades. Também pode ser uma ferramenta valiosa para
-            ONGs e órgãos governamentais na coordenação de respostas a desastres.</p>
-          <h3 class="text-2xl font-semibold text-sky-700 mb-3">Benefícios Esperados</h3>
-          <ul class="list-disc list-inside text-slate-600 space-y-1">
-            <li>Redução do tempo de resposta em emergências.</li>
-            <li>Aumento da resiliência comunitária.</li>
-            <li>Otimização da distribuição de ajuda.</li>
-            <li>Fortalecimento dos laços de solidariedade local.</li>
-          </ul>
-        </div>
-        <div class="chart-container">
-          <canvas id="alertasChart"></canvas>
-        </div>
-      </div>
-      <p class="text-center text-slate-500 mt-4 text-sm">
-        O gráfico acima ilustra tipos conceituais de alertas que o sistema pode gerenciar.
-      </p>
-    </div>
-  </section>
-
-  <section id="admin-simulado" class="py-16 bg-slate-50">
-    <div class="container mx-auto px-6">
-      <h2 class="section-title text-center text-slate-800">Painel Administrativo (Simulação)</h2>
-      <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-        Uma visão simplificada de como seria o painel de controle para administradores do Radar Solidário, permitindo o
-        monitoramento e gestão da plataforma.
-      </p>
-      <div class="bg-white p-8 rounded-lg shadow-xl">
-        <h3 class="text-2xl font-semibold text-sky-700 mb-6 text-center">Visão Geral em Tempo Real</h3>
-        <div class="grid md:grid-cols-3 gap-6 mb-8">
-          <div class="admin-stat-card">
-            <div id="alertasAtivos" class="admin-stat-number">0</div>
-            <div class="admin-stat-label">Alertas Ativos</div>
-          </div>
-          <div class="admin-stat-card">
-            <div id="pedidosAjuda" class="admin-stat-number">0</div>
-            <div class="admin-stat-label">Pedidos de Ajuda</div>
-          </div>
-          <div class="admin-stat-card">
-            <div id="voluntariosDisponiveis" class="admin-stat-number">0</div>
-            <div class="admin-stat-label">Voluntários Disponíveis</div>
-          </div>
-        </div>
-
-        <div class="bg-stone-100 p-6 rounded-md">
-          <h4 class="text-xl font-semibold text-slate-700 mb-4 text-center">Mapa de Ocorrências (Conceitual)</h4>
-          <div class="w-full h-64 bg-slate-300 rounded-md flex items-center justify-center text-slate-500">
-            [Espaço reservado para representação de mapa com pinos de alertas, pedidos e voluntários]
-          </div>
-          <p class="text-sm text-slate-500 mt-2 text-center">Este mapa permitiria visualizar geograficamente a situação,
-            facilitando a tomada de decisões e o envio de recursos.</p>
-        </div>
-        <p class="text-center text-slate-500 mt-8 text-sm">
-          O painel administrativo real incluiria ferramentas para gerenciar usuários, enviar alertas manuais, e analisar
-          dados para otimizar a plataforma.
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="text-sky-600 text-5xl mb-6 block">⚠️</span>
+        <h2 class="text-4xl md:text-5xl font-lexend font-bold text-slate-800 mb-6">O Desafio Imediato das Crises
+          Climáticas</h2>
+        <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
+          Eventos climáticos extremos estão se tornando mais frequentes e intensos. Quando o inesperado acontece, a
+          falta de apoio rápido e coordenado pode agravar o sofrimento de comunidades vulneráveis, deixando pessoas
+          isoladas e sem acesso a recursos essenciais no momento em que mais precisam.
         </p>
       </div>
     </div>
   </section>
 
-  <footer class="bg-slate-800 text-slate-300 py-8 text-center">
+  <section id="solucao" class="py-16 md:py-24 bg-white section-reveal">
     <div class="container mx-auto px-6">
-      <p>&copy; 2025 Radar Solidário. Todos os direitos reservados.</p>
-      <p class="text-sm mt-1">Uma iniciativa para fortalecer comunidades.</p>
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-lexend font-bold text-slate-800 mb-4">Radar Solidário: A Resposta Conectada
+        </h2>
+        <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">Nossa plataforma utiliza tecnologia para criar
+          uma ponte de solidariedade, transformando a maneira como as comunidades respondem a emergências.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+        <div
+          class="feature-card text-center p-8 bg-slate-50 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div class="feature-icon text-sky-500 text-6xl mb-6 inline-block transition-transform duration-300">⚡</div>
+          <h3 class="text-2xl font-lexend font-semibold text-slate-800 mb-3">Alertas Inteligentes e Rápidos</h3>
+          <p class="text-slate-600 leading-relaxed">Utilizamos APIs climáticas e geolocalização para enviar notificações
+            precisas e em tempo real para quem está na área de risco.</p>
+        </div>
+        <div
+          class="feature-card text-center p-8 bg-slate-50 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div class="feature-icon text-emerald-500 text-6xl mb-6 inline-block transition-transform duration-300">🤝
+          </div>
+          <h3 class="text-2xl font-lexend font-semibold text-slate-800 mb-3">Conexão Comunitária Direta</h3>
+          <p class="text-slate-600 leading-relaxed">Facilitamos o "match" entre quem precisa de ajuda e voluntários
+            próximos, promovendo a ajuda mútua de forma segura e eficiente.</p>
+        </div>
+        <div
+          class="feature-card text-center p-8 bg-slate-50 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div class="feature-icon text-amber-500 text-6xl mb-6 inline-block transition-transform duration-300">📱</div>
+          <h3 class="text-2xl font-lexend font-semibold text-slate-800 mb-3">Acesso Simplificado via WhatsApp</h3>
+          <p class="text-slate-600 leading-relaxed">Toda a interação principal acontece pelo WhatsApp, garantindo
+            acessibilidade mesmo com conexões de internet limitadas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="py-16 md:py-24 bg-sky-600 text-white section-reveal">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-lexend font-bold mb-4">Entenda o Fluxo da Ajuda</h2>
+        <p class="text-lg md:text-xl text-sky-100 max-w-3xl mx-auto">Veja como o Radar Solidário opera em 5 passos
+          simples para conectar quem precisa com quem pode ajudar.</p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div id="steps-container" class="space-y-6">
+          <div class="step-item bg-sky-700/80 p-6 rounded-xl shadow-lg cursor-pointer" data-step="1">
+            <div class="flex justify-between items-center">
+              <h3 class="text-2xl font-lexend font-semibold"><span class="text-sky-300 mr-3">1.</span> Detecção do
+                Evento Climático</h3>
+              <span class="step-arrow text-3xl transition-transform duration-300">▼</span>
+            </div>
+            <div class="step-details text-sky-100 leading-relaxed">
+              Nossos sistemas monitoram APIs climáticas e alertas da Defesa Civil 24/7. Ao identificar um risco iminente
+              (ex: enchente prevista, vendaval), as coordenadas geográficas das áreas potencialmente afetadas são
+              mapeadas instantaneamente.
+            </div>
+          </div>
+          <div class="step-item bg-sky-700/80 p-6 rounded-xl shadow-lg cursor-pointer" data-step="2">
+            <div class="flex justify-between items-center">
+              <h3 class="text-2xl font-lexend font-semibold"><span class="text-sky-300 mr-3">2.</span> Envio de Alerta
+                Inteligente</h3>
+              <span class="step-arrow text-3xl transition-transform duration-300">▼</span>
+            </div>
+            <div class="step-details text-sky-100 leading-relaxed">
+              <p class="mb-4">Usuários cadastrados e localizados dentro da zona de risco recebem um alerta direto via
+                WhatsApp. A mensagem é clara e oferece opções imediatas:</p>
+              <div class="bg-white p-4 rounded-lg shadow-md max-w-md mx-auto">
+                <div class="flex flex-col space-y-2">
+                  <div class="whatsapp-bubble received">
+                    <strong>Radar Solidário INFORMA:</strong><br>
+                    ALERTA de Chuva Forte para o Bairro Esperança nas próximas 2h. Risco de alagamentos.<br><br>
+                    Você precisa de ajuda ou pode ajudar?<br>
+                    Responda com o número:<br>
+                    1️⃣ PRECISO DE AJUDA 🆘<br>
+                    2️⃣ POSSO AJUDAR 💪<br>
+                    3️⃣ ESTOU SEGURO(A) ✅
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="step-item bg-sky-700/80 p-6 rounded-xl shadow-lg cursor-pointer" data-step="3">
+            <div class="flex justify-between items-center">
+              <h3 class="text-2xl font-lexend font-semibold"><span class="text-sky-300 mr-3">3.</span> Resposta Rápida
+                do Usuário</h3>
+              <span class="step-arrow text-3xl transition-transform duration-300">▼</span>
+            </div>
+            <div class="step-details text-sky-100 leading-relaxed">
+              O usuário responde diretamente no WhatsApp. Se escolher "1", é adicionado à lista de quem precisa de
+              ajuda. Se "2", à lista de voluntários disponíveis. Se "3", sua segurança é registrada e ele pode receber
+              outras informações.
+            </div>
+          </div>
+          <div class="step-item bg-sky-700/80 p-6 rounded-xl shadow-lg cursor-pointer" data-step="4">
+            <div class="flex justify-between items-center">
+              <h3 class="text-2xl font-lexend font-semibold"><span class="text-sky-300 mr-3">4.</span> Match Solidário
+                Inteligente</h3>
+              <span class="step-arrow text-3xl transition-transform duration-300">▼</span>
+            </div>
+            <div class="step-details text-sky-100 leading-relaxed">
+              Nosso sistema cruza informações de localização e tipo de necessidade/oferta para encontrar o voluntário
+              mais próximo e adequado. O voluntário recebe uma notificação para confirmar sua disponibilidade para
+              aquele chamado específico.
+            </div>
+          </div>
+          <div class="step-item bg-sky-700/80 p-6 rounded-xl shadow-lg cursor-pointer" data-step="5">
+            <div class="flex justify-between items-center">
+              <h3 class="text-2xl font-lexend font-semibold"><span class="text-sky-300 mr-3">5.</span> Conexão e Ajuda
+                Direta</h3>
+              <span class="step-arrow text-3xl transition-transform duration-300">▼</span>
+            </div>
+            <div class="step-details text-sky-100 leading-relaxed">
+              Após a confirmação do voluntário, o Radar Solidário facilita a comunicação segura entre as partes
+              (compartilhando contatos com consentimento ou através de um canal intermediado), permitindo que a ajuda
+              seja coordenada e chegue rapidamente.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proposta-valor" class="py-16 md:py-24 bg-white section-reveal">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-lexend font-bold text-slate-800 mb-4">Por que o Radar Solidário Faz a
+          Diferença?</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="p-6 bg-slate-100 rounded-lg shadow-md text-center">
+          <div class="text-emerald-500 text-5xl mb-4">⏱️</div>
+          <h3 class="text-xl font-lexend font-semibold text-slate-800 mb-2">Resposta Imediata</h3>
+          <p class="text-slate-600 text-sm">Agilidade na comunicação e no acionamento da ajuda.</p>
+        </div>
+        <div class="p-6 bg-slate-100 rounded-lg shadow-md text-center">
+          <div class="text-emerald-500 text-5xl mb-4">🌍</div>
+          <h3 class="text-xl font-lexend font-semibold text-slate-800 mb-2">Foco Hiperlocal</h3>
+          <p class="text-slate-600 text-sm">Conecta vizinhos e recursos dentro da mesma comunidade afetada.</p>
+        </div>
+        <div class="p-6 bg-slate-100 rounded-lg shadow-md text-center">
+          <div class="text-emerald-500 text-5xl mb-4">🎯</div>
+          <h3 class="text-xl font-lexend font-semibold text-slate-800 mb-2">Alertas Precisos</h3>
+          <p class="text-slate-600 text-sm">Tecnologia para identificar quem realmente precisa ser notificado.</p>
+        </div>
+        <div class="p-6 bg-slate-100 rounded-lg shadow-md text-center">
+          <div class="text-emerald-500 text-5xl mb-4">🔒</div>
+          <h3 class="text-xl font-lexend font-semibold text-slate-800 mb-2">Comunicação Segura</h3>
+          <p class="text-slate-600 text-sm">Intermediação e orientações para proteger os dados dos usuários.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="junte-se" class="py-20 md:py-32 hero-bg text-white section-reveal">
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <h2 class="text-4xl md:text-5xl font-lexend font-bold mb-8">Faça Parte da Rede Radar Solidário</h2>
+      <p class="text-xl md:text-2xl text-sky-100 mb-12 max-w-3xl mx-auto">
+        Seja para pedir ajuda em um momento de necessidade, para oferecer seu apoio como voluntário(a), ou para integrar
+        o Radar Solidário à sua organização ou município, sua participação é fundamental.
+      </p>
+      <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8 mb-12">
+        <div class="text-center p-6 glassmorphism-card rounded-xl">
+          <h3 class="text-2xl font-lexend font-semibold mb-4">Precisa de Ajuda?</h3>
+          <p class="mb-4 text-sky-200">Envie "1" para nosso WhatsApp:</p>
+          <a href="https://wa.me/5511912232956?text=1" target="_blank"
+            class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg cta-button text-lg">
+            Pedir Ajuda Agora
+          </a>
+        </div>
+        <div class="text-center p-6 glassmorphism-card rounded-xl">
+          <h3 class="text-2xl font-lexend font-semibold mb-4">Quer ser Voluntário(a)?</h3>
+          <p class="mb-4 text-sky-200">Envie "2" para nosso WhatsApp:</p>
+          <a href="https://wa.me/5511912232956?text=2" target="_blank"
+            class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-8 rounded-lg cta-button text-lg">
+            Quero Ajudar
+          </a>
+        </div>
+      </div>
+      <p class="text-sky-200 text-lg">Ou aponte a câmera do seu celular para o QR Code e inicie a conversa:</p>
+      <div class="mt-6 inline-block bg-white p-2 rounded-lg shadow-xl">
+        <img src="frame.png" alt="QR Code para WhatsApp Radar Solidário" class="rounded-md">
+      </div>
+      <p class="mt-10 text-sm text-sky-300">Número de WhatsApp para contato: +55 (11) 91223-2956</p>
+    </div>
+  </section>
+
+  <section id="ecossistema" class="py-16 md:py-24 bg-slate-100 section-reveal">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-lexend font-bold text-slate-800 mb-4">Nosso Ecossistema de Apoio</h2>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">Contamos com parcerias e tecnologias chave para fortalecer
+          nossa atuação.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-8 items-center">
+        <div class="text-center grayscale hover:grayscale-0 transition-all duration-300">
+          <img src="defesacivil.png" alt="Logo Defesa Civil" class="mx-auto h-16 mb-2">
+          <p class="text-sm font-medium text-slate-700">Defesa Civil</p>
+        </div>
+        <div class="text-center grayscale hover:grayscale-0 transition-all duration-300">
+          <img src="ong.png" alt="Logo ONGs Locais" class="mx-auto h-16 mb-2">
+          <p class="text-sm font-medium text-slate-700">ONGs Locais</p>
+        </div>
+        <div class="text-center grayscale hover:grayscale-0 transition-all duration-300">
+          <img src="google.png" alt="Logo Google APIs" class="mx-auto h-16 mb-2">
+          <p class="text-sm font-medium text-slate-700">Tecnologias Google</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-slate-800 text-slate-300 py-12">
+    <div class="container mx-auto px-6 text-center">
+      <a href="#" class="text-2xl font-lexend font-bold text-white mb-4 inline-block">Radar Solidário</a>
+      <p class="mb-6 text-slate-400 max-w-md mx-auto text-sm">
+        Conectando corações e tecnologia para construir comunidades mais resilientes e solidárias.
+      </p>
+      <p class="text-xs text-slate-500">&copy; 2025 Radar Solidário. Todos os direitos reservados. Uma iniciativa de
+        impacto social.</p>
+      <p class="text-xs text-slate-500 mt-1">Lembre-se: Em caso de emergência grave e imediata, sempre contate os
+        serviços oficiais (190, 193, 199).</p>
     </div>
   </footer>
+
+  <script>
+
+  </script>
 </body>
 
 </html>
