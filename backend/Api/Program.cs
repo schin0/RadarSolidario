@@ -4,6 +4,21 @@ using Core.UseCase;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var allowSpecificOrigins = "_allowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: allowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("null",
+                                "http://localhost:XXXX",
+                                "http://127.0.0.1:XXXX")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -22,7 +37,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 }
+
+app.UseCors(allowSpecificOrigins);
 
 app.UseHttpsRedirection();
 
