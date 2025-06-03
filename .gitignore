@@ -5,3 +5,8 @@ gateway/qrcode_wpp_service.png
 backend/*/.vs
 backend/*/bin
 backend/*/obj
+backend/Tests/*/.vs
+backend/Tests/*/bin
+backend/Tests/*/obj
+backend/*/UnitTests/coveragereport/*
+backend/*/UnitTests/TestResults/*
