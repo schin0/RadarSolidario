@@ -1,6 +1,5 @@
 ﻿using Core.Request;
 using Infra.Interfaces;
-using Infra.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
